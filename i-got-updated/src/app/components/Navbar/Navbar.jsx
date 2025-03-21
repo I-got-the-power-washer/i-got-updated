@@ -13,7 +13,7 @@ import {
   FaBars,
   FaChevronRight,
 } from "react-icons/fa";
-import Bubble from "../../../../public/animations/Bubbles.json"; // Adjust path as needed
+import Bubble from "../../../../public/animations/Bubbles.json"; 
 
 const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
 
