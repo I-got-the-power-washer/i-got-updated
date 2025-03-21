@@ -75,7 +75,7 @@ const ServicesSection = () => {
             about={card.about}
             animationData={card.animationData}
             link={card.link}
-            img={card.img}
+           
           />
         ))}
       </CardsGrid>
@@ -103,17 +103,14 @@ const LottieWrapper = ({ animationData }) => {
   }
 };
 
-const Card = ({ animationData, name, about,link,img }) => {
+const Card = ({ animationData, name, about,link, }) => {
   return (
     <StyledWrapper>
       <div className="card">
       <div className="profile-pic">
-      {useLottie && animationData ? (
-        <LottieWrapper animationData={animationData} />
-      ) : (
-        <img src={img} alt="Profile" />
-      )}
-    </div>
+  {animationData && <LottieWrapper animationData={animationData} />}
+</div>
+
         <div className="bottom">
           <div className="content">
             <span className="name">{name}</span>
