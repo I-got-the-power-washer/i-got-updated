@@ -108,7 +108,7 @@ const Card = ({ animationData, name, about,link, }) => {
     <StyledWrapper>
       <div className="card">
       <div className="profile-pic">
-  {animationData && <LottieWrapper animationData={animationData} />}
+  <LottieWrapper animationData={animationData} />
 </div>
 
         <div className="bottom">
