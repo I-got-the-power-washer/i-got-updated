@@ -1,72 +1,87 @@
 "use client";
-import React from 'react';
-import styled from 'styled-components';
+import { useState, useEffect } from 'react';
 import dynamic from "next/dynamic";
-const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
+import styled from 'styled-components';
+import Link from 'next/link';
+
+// Dynamically import Lottie with SSR disabled
+const Lottie = dynamic(() => import("lottie-react"), { 
+  ssr: false,
+  loading: () => <div className="lottie-loading">Loading...</div>
+});
+
+// Import animations
 import BubblesAnimation from '../../../../public/animations/house cleaning (2).json';
-// const BubblesAnimation='../../../../public/animations/Bubbles'
-import ManCleaningWindow from '../../../../public/animations/residential-window.json'
-import Gutter from "../../../../public/animations/Man doing Gutter Cleaning.json"
-import Professional from "../../../../public/animations/Droplit.json"
-import Stain from "../../../../public/animations/stain-cleaning.json" // Adjust path as needed
-import Check from "../../../../public/animations/House Cleaning.json"
-import waterdrop from '../../../../public/animations/Floor Washing.json'
-import { useLottie } from 'lottie-react';
+import ManCleaningWindow from '../../../../public/animations/residential-window.json';
+import Gutter from "../../../../public/animations/Man doing Gutter Cleaning.json";
+import Professional from "../../../../public/animations/Droplit.json";
+import Stain from "../../../../public/animations/stain-cleaning.json";
+import Check from "../../../../public/animations/House Cleaning.json";
+import waterdrop from '../../../../public/animations/Floor Washing.json';
 
 const ServicesSection = () => {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   const cardsData = [
     {
       id: 1,
       name: "Pressure Washing",
       about: "Professional exterior cleaning for homes and driveways",
-      link:"/pressure-washing",
+      link: "/pressure-washing",
       animationData: Professional,
-      
     },
     {
       id: 2,
       name: "House Washing",
       about: "Safe and effective roof stain removal services",
       animationData: Check,
-      link:"/house-washing"
+      link: "/house-washing"
     },
     {
       id: 3,
       name: "Gutter Cleaning",
       about: "Complete gutter cleaning and protection solutions",
-      link:"/gutter-cleaning",
+      link: "/gutter-cleaning",
       animationData: Gutter,
     },
     {
       id: 4,
       name: "Window Cleaning",
       about: "Streak-free window cleaning services",
-      link:"/window-cleaning-cincinnati",
-      animationData:  ManCleaningWindow,
+      link: "/window-cleaning-cincinnati",
+      animationData: ManCleaningWindow,
     },
     {
       id: 5,
       name: "Roof Washing",
       about: "Deck cleaning and sealing services",
-      link:"/roof-washing",
+      link: "/roof-washing",
       animationData: BubblesAnimation,
-      
     },
     {
       id: 6,
       name: "Seal Solutions",
       about: "Driveway and sidewalk deep cleaning",
-      link:"/seal-solutions",
+      link: "/seal-solutions",
       animationData: Stain,
     },
   ];
 
+  if (!isMounted) return null;
+
   return (
     <SectionContainer>
-      <div style={{ display: "flex", alignItems: "center", gap: "1px" }}>
+      <HeaderWrapper>
         <SectionHeading>Our Residential Services</SectionHeading>
-        <Lottie animationData={waterdrop} style={{ width: 100, height: 100, marginTop: "-50px"}} />
-      </div>
+        <Lottie 
+          animationData={waterdrop} 
+          style={{ width: 100, height: 100, marginTop: "-50px" }} 
+        />
+      </HeaderWrapper>
       <CardsGrid>
         {cardsData.map(card => (
           <Card
@@ -75,7 +90,6 @@ const ServicesSection = () => {
             about={card.about}
             animationData={card.animationData}
             link={card.link}
-           
           />
         ))}
       </CardsGrid>
@@ -84,32 +98,39 @@ const ServicesSection = () => {
 };
 
 const LottieWrapper = ({ animationData }) => {
-  if (!animationData) {
-    return <div className="lottie-error">Animation unavailable</div>;
-  }
+  const [isLoaded, setIsLoaded] = useState(false);
 
-  try {
-    return (
-      <Lottie
-        animationData={animationData}
-        loop
-        autoplay
-        className="lottie-animation"
-      />
-    );
-  } catch (error) {
-    console.error('Lottie animation error:', error);
-    return <div className="lottie-error">Error loading animation</div>;
-  }
+  useEffect(() => {
+    setIsLoaded(true);
+  }, []);
+
+  if (!isLoaded) return <div className="lottie-loading">Loading...</div>;
+
+  return (
+    <Lottie
+      animationData={animationData}
+      loop
+      autoplay
+      className="lottie-animation"
+    />
+  );
 };
 
-const Card = ({ animationData, name, about,link, }) => {
+const Card = ({ animationData, name, about, link }) => {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) return null;
+
   return (
     <StyledWrapper>
       <div className="card">
-      <div className="profile-pic">
-  <LottieWrapper animationData={animationData} />
-</div>
+        <div className="profile-pic">
+          {animationData && <LottieWrapper animationData={animationData} />}
+        </div>
 
         <div className="bottom">
           <div className="content">
@@ -120,7 +141,9 @@ const Card = ({ animationData, name, about,link, }) => {
             <div className="service-name-container">
               <span className="service-name">{name}</span>
             </div>
-            <a href={link || "#"} className="button">Learn More</a>
+            <Link href={link || "#"} className="button">
+              Learn More
+            </Link>
           </div>
         </div>
       </div>
@@ -128,6 +151,7 @@ const Card = ({ animationData, name, about,link, }) => {
   );
 };
 
+// Styled Components
 const SectionContainer = styled.section`
   background: #fff;
   padding: 4rem 2rem;
@@ -137,16 +161,23 @@ const SectionContainer = styled.section`
   align-items: center;
 `;
 
+const HeaderWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1px;
+  margin-bottom: 3rem;
+`;
+
 const SectionHeading = styled.h1`
   color: #00C6F9;
   font-size: 2.5rem;
   text-align: center;
-  margin-bottom: 3rem;
   text-transform: uppercase;
   letter-spacing: 2px;
   
   @media (max-width: 768px) {
-    font-size: 1.1rem;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
   }
 `;
 
@@ -159,6 +190,10 @@ const CardsGrid = styled.div`
   margin: 0 auto;
   
   @media (min-width: 768px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (min-width: 1024px) {
     grid-template-columns: repeat(3, 1fr);
   }
 `;
@@ -174,6 +209,11 @@ const StyledWrapper = styled.div`
     box-shadow: rgba(96, 75, 74, 0.188) 0px 70px 30px -50px;
     transition: all 0.5s ease-in-out;
     margin: 0 auto;
+
+    @media (max-width: 768px) {
+      width: 280px;
+      height: 280px;
+    }
   }
 
   .profile-pic {
@@ -199,10 +239,14 @@ const StyledWrapper = styled.div`
     transform: scale(1.2);
   }
 
-  .lottie-error {
-    color: #ff0000;
-    padding: 1rem;
-    text-align: center;
+  .lottie-loading {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #00C6F9;
+    font-size: 0.8rem;
   }
 
   .bottom {
@@ -279,11 +323,13 @@ const StyledWrapper = styled.div`
     transition: all 0.3s ease;
     cursor: pointer;
     white-space: nowrap;
-  }
+    text-decoration: none;
+    display: inline-block;
 
-  .button:hover {
-    background: #00A3CC;
-    color: white;
+    &:hover {
+      background: #00A3CC;
+      color: white;
+    }
   }
 
   .card:hover {
