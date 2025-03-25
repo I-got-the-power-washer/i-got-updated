@@ -1,23 +1,22 @@
 "use client";
 import { useState, useEffect } from 'react';
-import dynamic from "next/dynamic";
 import styled from 'styled-components';
 import Link from 'next/link';
+import dynamic from "next/dynamic";
 
-// Dynamically import Lottie with SSR disabled
+// Import images
+import PressureWashingImg from '../../../../public/images/01 (1).jpg';
+import HouseWashingImg from '../../../../public/images/302-e1738968818248.png';
+import GutterCleaningImg from '../../../../public/images/gutter.png';
+import WindowCleaningImg from '../../../../public/images/Untitled-4 (1).jpg';
+import RoofWashingImg from '../../../../public/images/roofing-washing.png';
+import SealSolutionsImg from '../../../../public/images/2-1.jpg';
+import waterdrop from '../../../../public/animations/Floor Washing.json';
+
 const Lottie = dynamic(() => import("lottie-react"), { 
   ssr: false,
   loading: () => <div className="lottie-loading">Loading...</div>
 });
-
-// Import animations
-import BubblesAnimation from '../../../../public/animations/house cleaning (2).json';
-import ManCleaningWindow from '../../../../public/animations/residential-window.json';
-import Gutter from "../../../../public/animations/Man doing Gutter Cleaning.json";
-import Professional from "../../../../public/animations/Droplit.json";
-import Stain from "../../../../public/animations/stain-cleaning.json";
-import Check from "../../../../public/animations/House Cleaning.json";
-import waterdrop from '../../../../public/animations/Floor Washing.json';
 
 const ServicesSection = () => {
   const [isMounted, setIsMounted] = useState(false);
@@ -32,13 +31,13 @@ const ServicesSection = () => {
       name: "Pressure Washing",
       about: "Professional exterior cleaning for homes and driveways",
       link: "/pressure-washing",
-      animationData: Professional,
+      imageUrl: PressureWashingImg,
     },
     {
       id: 2,
       name: "House Washing",
       about: "Safe and effective roof stain removal services",
-      animationData: Check,
+      imageUrl: HouseWashingImg,
       link: "/house-washing"
     },
     {
@@ -46,28 +45,28 @@ const ServicesSection = () => {
       name: "Gutter Cleaning",
       about: "Complete gutter cleaning and protection solutions",
       link: "/gutter-cleaning",
-      animationData: Gutter,
+      imageUrl: GutterCleaningImg,
     },
     {
       id: 4,
       name: "Window Cleaning",
       about: "Streak-free window cleaning services",
       link: "/window-cleaning-cincinnati",
-      animationData: ManCleaningWindow,
+      imageUrl: WindowCleaningImg,
     },
     {
       id: 5,
       name: "Roof Washing",
       about: "Deck cleaning and sealing services",
       link: "/roof-washing",
-      animationData: BubblesAnimation,
+      imageUrl: RoofWashingImg,
     },
     {
       id: 6,
       name: "Seal Solutions",
       about: "Driveway and sidewalk deep cleaning",
       link: "/seal-solutions",
-      animationData: Stain,
+      imageUrl: SealSolutionsImg,
     },
   ];
 
@@ -76,11 +75,14 @@ const ServicesSection = () => {
   return (
     <SectionContainer>
       <HeaderWrapper>
-        <SectionHeading>Our Residential Services</SectionHeading>
-        <Lottie 
+        <h2 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#00C6F9] to-blue-800 tracking-tight mb-6 pb-4 relative group">
+          Our Residential Services
+          <span className="absolute bottom-0 left-0 w-0 h-1 bg-white transition-all duration-500 group-hover:w-full"></span>
+        </h2>
+        {/* <Lottie 
           animationData={waterdrop} 
           style={{ width: 100, height: 100, marginTop: "-50px" }} 
-        />
+        /> */}
       </HeaderWrapper>
       <CardsGrid>
         {cardsData.map(card => (
@@ -88,7 +90,7 @@ const ServicesSection = () => {
             key={card.id}
             name={card.name}
             about={card.about}
-            animationData={card.animationData}
+            imageUrl={card.imageUrl}
             link={card.link}
           />
         ))}
@@ -97,26 +99,7 @@ const ServicesSection = () => {
   );
 };
 
-const LottieWrapper = ({ animationData }) => {
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  useEffect(() => {
-    setIsLoaded(true);
-  }, []);
-
-  if (!isLoaded) return <div className="lottie-loading">Loading...</div>;
-
-  return (
-    <Lottie
-      animationData={animationData}
-      loop
-      autoplay
-      className="lottie-animation"
-    />
-  );
-};
-
-const Card = ({ animationData, name, about, link }) => {
+const Card = ({ imageUrl, name, about, link }) => {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
@@ -129,7 +112,12 @@ const Card = ({ animationData, name, about, link }) => {
     <StyledWrapper>
       <div className="card">
         <div className="profile-pic">
-          {animationData && <LottieWrapper animationData={animationData} />}
+          <img 
+            src={imageUrl.src} 
+            alt={name} 
+            className="profile-image" 
+            loading="lazy"
+          />
         </div>
 
         <div className="bottom">
@@ -151,7 +139,6 @@ const Card = ({ animationData, name, about, link }) => {
   );
 };
 
-// Styled Components
 const SectionContainer = styled.section`
   background: #fff;
   padding: 4rem 2rem;
@@ -166,19 +153,6 @@ const HeaderWrapper = styled.div`
   align-items: center;
   gap: 1px;
   margin-bottom: 3rem;
-`;
-
-const SectionHeading = styled.h1`
-  color: #00C6F9;
-  font-size: 2.5rem;
-  text-align: center;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  
-  @media (max-width: 768px) {
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-  }
 `;
 
 const CardsGrid = styled.div`
@@ -201,7 +175,7 @@ const CardsGrid = styled.div`
 const StyledWrapper = styled.div`
   .card {
     width: 320px;
-    height: 320px;
+    height: 380px;
     background: white;
     border-radius: 32px;
     padding: 3px;
@@ -212,14 +186,14 @@ const StyledWrapper = styled.div`
 
     @media (max-width: 768px) {
       width: 280px;
-      height: 280px;
+      height: 340px;
     }
   }
 
   .profile-pic {
     position: absolute;
     width: calc(100% - 6px);
-    height: calc(100% - 6px);
+    height: 65%;
     top: 3px;
     left: 3px;
     border-radius: 29px;
@@ -228,25 +202,14 @@ const StyledWrapper = styled.div`
     overflow: hidden;
     transition: all 0.5s ease-in-out 0.2s, z-index 0.5s ease-in-out 0.2s;
     background: #ffffff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
 
-  .lottie-animation {
+  .profile-image {
     width: 100%;
     height: 100%;
-    transform: scale(1.2);
-  }
-
-  .lottie-loading {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #00C6F9;
-    font-size: 0.8rem;
+    object-fit: cover;
+    transform: scale(1);
+    transition: all 0.5s ease-in-out;
   }
 
   .bottom {
@@ -282,7 +245,7 @@ const StyledWrapper = styled.div`
     display: block;
     font-size: 1rem;
     color: white;
-    margin-top: 1rem;
+    margin-top: 8px;
   }
 
   .bottom-bottom {
@@ -360,7 +323,7 @@ const StyledWrapper = styled.div`
     border-radius: 0px;
   }
 
-  .card:hover .lottie-animation {
+  .card:hover .profile-image {
     transform: scale(1.5);
     transition: all 0.5s ease-in-out 0.5s;
   }

@@ -1,0 +1,238 @@
+/* components/WindowCleaning.module.css */
+.section {
+    padding: 6rem 0;
+    background: linear-gradient(to bottom, #f8fafc 0%, #ffffff 100%);
+  }
+  
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+  
+  .content {
+    position: relative;
+  }
+  
+  .heading {
+    font-size: 2.75rem;
+    color: #00c6f9;
+    margin-bottom: 2.5rem;
+    line-height: 1.2;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+  }
+  
+  .features {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+  
+  .featureItem {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+  
+  .icon {
+    width: 24px;
+    height: 24px;
+    color: #00c6f9;
+    flex-shrink: 0;
+  }
+  
+  .featureText {
+    font-size: 1rem;
+    color: #374151;
+    margin: 0;
+    font-weight: 500;
+  }
+  
+  .textContent {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+  
+  .paragraph {
+    font-size: 1.1rem;
+    color: #4b5563;
+    line-height: 1.7;
+    padding-left: 1.5rem;
+    border-left: 3px solid #00c6f9;
+  }
+  
+  .ctaButton {
+    background: #00c6f9;
+    color: white;
+    padding: 1.25rem 2.5rem;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 198, 249, 0.2);
+  }
+  
+  .ctaButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 198, 249, 0.3);
+    background: #00b4e0;
+  }
+  
+  .imageColumn {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 2rem;
+    height: fit-content;
+    position: sticky;
+    top: 2rem;
+  }
+  
+  .imageWrapper {
+    position: relative;
+    height: 500px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  }
+  
+  .image {
+    transition: transform 0.3s ease;
+  }
+  
+  .image:hover {
+    transform: scale(1.02);
+  }
+  
+  @media (max-width: 1024px) {
+    .container {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+  
+    .imageColumn {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto;
+    }
+  
+    .heading {
+      font-size: 2.5rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .section {
+      padding: 4rem 0;
+    }
+  
+    .features {
+      grid-template-columns: 1fr;
+    }
+  
+    .imageColumn {
+      grid-template-columns: 1fr;
+    }
+  
+    .imageWrapper {
+      height: 400px;
+    }
+  
+    .heading {
+      font-size: 2rem;
+    }
+  
+    .paragraph {
+      font-size: 1rem;
+      padding-left: 1rem;
+    }
+  
+    .ctaButton {
+      width: 100%;
+      padding: 1.2rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .container {
+      padding: 0 1rem;
+    }
+  
+    .heading {
+      font-size: 1.75rem;
+    }
+  
+    .imageWrapper {
+      height: 300px;
+    }
+  }
+  /* Updated CSS */
+.ctaButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: linear-gradient(135deg, #00c6f9 0%, #0099cc 100%);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-decoration: none;
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .phoneIcon {
+    width: 20px;
+    height: 20px;
+    color: white;
+    transition: transform 0.2s ease;
+  }
+  
+  .phoneNumber {
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 0.5px;
+    position: relative;
+    padding-right: 8px;
+  }
+  
+  .ctaButton:hover {
+    background: linear-gradient(135deg, #00b4e0 0%, #0088b3 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  .ctaButton:hover .phoneIcon {
+    transform: scale(1.1);
+  }
+  
+  .ctaButton:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  @media (max-width: 768px) {
+    .ctaButton {
+      padding: 0.9rem 1.5rem;
+      font-size: 1rem;
+      gap: 10px;
+    }
+    
+    .phoneIcon {
+      width: 18px;
+      height: 18px;
+    }
+  }
