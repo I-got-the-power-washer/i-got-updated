@@ -2,6 +2,10 @@
 import Image from "next/image";
 import styles from "./windowCleaning.module.css";
 import { FaPhone } from "react-icons/fa";
+import dynamic from "next/dynamic";
+const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
+import Professional from "../../../../public/animations/residential-window.json";
+import { Player } from "@lottiefiles/react-lottie-player";
 
 const WindowCleaning = () => {
   return (
@@ -45,18 +49,18 @@ const WindowCleaning = () => {
         </div>
 
         <div className={styles.imageColumn}>
-          <div className={styles.imageWrapper}>
-            <Image
-              src="/images/IMG-20250116-WA0037-e1738018013242.jpg"
-              alt="Commercial window cleaning"
-              layout="fill"
-              objectFit="cover"
-              className={styles.image}
+        <div className={styles.lottieWrapper}>
+            <Player
+              autoplay
+              loop
+              src={Professional}
+              className={styles.lottieAnimation}
+              style={{ width: '100%', height: '100%' }}
             />
           </div>
           <div className={styles.imageWrapper}>
             <Image
-              src="/images/05 (1).jpg"
+              src="/images/IMG-20250116-WA0037-e1738018013242.jpg"
               alt="Residential window cleaning"
               layout="fill"
               objectFit="cover"
