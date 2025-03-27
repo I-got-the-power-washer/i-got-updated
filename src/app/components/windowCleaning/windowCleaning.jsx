@@ -3,9 +3,13 @@ import Image from "next/image";
 import styles from "./windowCleaning.module.css";
 import { FaPhone } from "react-icons/fa";
 import dynamic from "next/dynamic";
-const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
 import Professional from "../../../../public/animations/residential-window.json";
-import { Player } from "@lottiefiles/react-lottie-player";
+
+// Dynamically import Lottie with SSR disabled
+const LottiePlayer = dynamic(
+  () => import("@lottiefiles/react-lottie-player").then((mod) => mod.Player),
+  { ssr: false }
+);
 
 const WindowCleaning = () => {
   return (
@@ -50,13 +54,15 @@ const WindowCleaning = () => {
 
         <div className={styles.imageColumn}>
         <div className={styles.lottieWrapper}>
-            <Player
-              autoplay
-              loop
-              src={Professional}
-              className={styles.lottieAnimation}
-              style={{ width: '100%', height: '100%' }}
-            />
+            {typeof window !== "undefined" && (
+              <LottiePlayer
+                autoplay
+                loop
+                src={Professional}
+                className={styles.lottieAnimation}
+                style={{ width: '100%', height: '100%' }}
+              />
+            )}
           </div>
           <div className={styles.imageWrapper}>
             <Image
