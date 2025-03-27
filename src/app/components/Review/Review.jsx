@@ -202,7 +202,7 @@ const Review = () => {
                         He did a tremendous job on a large project (see before
                         and after photos). He was efficient, on time, organized,
                         and always in touch. He didn’t try to over-sell products
-                        and stuck to what I was looking for”
+                        and stuck to what I ....”
                       </p>
                     </blockquote>
                   </div>
