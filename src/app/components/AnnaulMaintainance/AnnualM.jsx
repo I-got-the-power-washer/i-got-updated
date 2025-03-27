@@ -39,7 +39,7 @@ const Annual = () => {
           {serviceBenefits.map(({ title, icon: Icon, text }, index) => (
             <div key={index} className="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
               <Icon className="h-12 w-12 text-[#00C6F9] mb-4" />
-              <h3 className="text-xl font-semibold mb-2">{title}</h3>
+              <h3 className="text-xl font-semibold mb-2 text-gray-700">{title}</h3>
               <p className="text-gray-600">{text}</p>
             </div>
           ))}

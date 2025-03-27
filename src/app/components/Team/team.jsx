@@ -4,12 +4,12 @@ import styles from './team.module.css';
 
 const TeamProfiles = () => {
   const teamMembers = [
-    { id: 1, name: "Steven Robinson", role: "Web Developer", img: "https://i.pravatar.cc/300?img=12" },
-    { id: 2, name: "Mari Johnson", role: "UX Designer", img: "https://i.pravatar.cc/300?img=37" },
-    { id: 3, name: "Bob", role: "Designer", img: "https://i.pravatar.cc/300?img=3" },
-    { id: 4, name: "Susan Williams", role: "Full Stack Developer", img: "https://i.pravatar.cc/300?img=48" },
-    { id: 5, name: "James Braun", role: "Content Creator", img: "https://i.pravatar.cc/300?img=52" },
-    { id: 6, name: "Andrew Charles", role: "Front End Developer", img: "https://i.pravatar.cc/300?img=33" },
+    { id: 1, name: "Emily", role: "Emily is a versatile and detail-oriented professional", img: "/images/4-min.jpg" },
+    { id: 2, name: "Morgan", role: "Marketing Momentum Architect", img: "/images/Untitled-5.jpg" },
+    { id: 3, name: "Brandon", role: "Precision-Focused Quality Perfectionist", img: "/images/3-min.jpg" },
+    { id: 4, name: "Gray", role: "skilled professional", img: "/images/1-min.jpg" },
+    { id: 5, name: "John", role: "Community Outreach Dynamo", img: "/images/2-min.jpg" },
+    { id: 6, name: "Brady", role: "Emerging Operations Prodigy", img: "/images/1 (2).jpg" },
   ];
 
   const radioRefs = useRef([]);

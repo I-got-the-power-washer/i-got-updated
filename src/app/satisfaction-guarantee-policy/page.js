@@ -54,7 +54,7 @@ const ReviewPage = () => {
     </p>
   </div>
 
-  <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+  <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 bg-white">
     {/* Our Promise Section */}
     <div className="bg-white rounded-2xl shadow-xl p-8 border-2 border-[#00C6F9]/20">
       <div className="flex items-center gap-3 mb-6">

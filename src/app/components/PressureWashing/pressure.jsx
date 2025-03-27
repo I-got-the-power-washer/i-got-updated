@@ -86,7 +86,7 @@ const Pressure = () => {
                     <li className="flex items-start space-x-3">
                       <div className="flex-shrink-0 w-6 h-6 bg-[#00C6F9] rounded-full mt-1"></div>
                       <div>
-                        <strong>High-Performance Equipment:</strong> We use
+                        <strong className="text-black">High-Performance Equipment:</strong> We use
                         industry-leading pressure washers with up to 23 GPM output,
                         cleaning efficiently without surface damage.
                       </div>
@@ -94,7 +94,7 @@ const Pressure = () => {
                     <li className="flex items-start space-x-3">
                       <div className="flex-shrink-0 w-6 h-6 bg-[#00C6F9] rounded-full mt-1"></div>
                       <div>
-                        <strong>Post-Treatment Protection:</strong> Our specialized
+                        <strong className="text-black">Post-Treatment Protection:</strong> Our specialized
                         treatment eliminates organic growth at the root, preventing
                         premature buildup.
                       </div>
@@ -129,7 +129,7 @@ const Pressure = () => {
                   We are committed to delivering perfection with our pressure wash services.
                   From small residential jobs to large commercial projects, we offer:
                 </p>
-                <ul className="columns-2 gap-8">
+                <ul className="columns-2 gap-8 text-black">
                   {[
                     "Roof cleaning", "Fence cleaning", "House clean", 
                     "Solar panel cleaning", "Stain removals", 
@@ -146,7 +146,7 @@ const Pressure = () => {
               </div>
               <div className="space-y-6">
                 <h3 className="text-2xl font-semibold text-gray-800">Service Areas</h3>
-                <ul className="grid grid-cols-2 gap-4">
+                <ul className="grid grid-cols-2 gap-4 text-black">
                   {[
                     "Hamilton County", "Clermont County", 
                     "Butler County", "Warren County", 
@@ -181,12 +181,12 @@ const Pressure = () => {
                   Our service offerings rely on cutting-edge equipment including:
                 </p>
                 <ul className="space-y-4">
-                  <li className="flex items-start">
+                  <li className="flex items-start text-black">
                     <div className="bg-[#00C6F9] text-white p-2 rounded-lg mr-4">
                       🔥
                     </div>
                     <div>
-                      <strong>Hot/Cold Washers:</strong> For grease removal and general cleaning
+                      <strong className="text-black">Hot/Cold Washers:</strong> For grease removal and general cleaning
                     </div>
                   </li>
                   <li className="flex items-start">
@@ -194,7 +194,7 @@ const Pressure = () => {
                       🚿
                     </div>
                     <div>
-                      <strong>High-Pressure Nozzles:</strong> Up to 4000 PSI force
+                      <strong className="text-black">High-Pressure Nozzles:</strong> Up to 4000 PSI force
                     </div>
                   </li>
                   <li className="flex items-start">
@@ -202,7 +202,7 @@ const Pressure = () => {
                       🚚
                     </div>
                     <div>
-                      <strong>Specialized Fleet:</strong> Mobile cleaning solutions
+                      <strong className="text-black">Specialized Fleet:</strong> Mobile cleaning solutions
                     </div>
                   </li>
                 </ul>
