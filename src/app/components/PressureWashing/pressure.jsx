@@ -85,7 +85,7 @@ const Pressure = () => {
                   <ul className="space-y-4">
                     <li className="flex items-start space-x-3">
                       <div className="flex-shrink-0 w-6 h-6 bg-[#00C6F9] rounded-full mt-1"></div>
-                      <div>
+                      <div className="text-black">
                         <strong className="text-black">High-Performance Equipment:</strong> We use
                         industry-leading pressure washers with up to 23 GPM output,
                         cleaning efficiently without surface damage.
@@ -93,7 +93,7 @@ const Pressure = () => {
                     </li>
                     <li className="flex items-start space-x-3">
                       <div className="flex-shrink-0 w-6 h-6 bg-[#00C6F9] rounded-full mt-1"></div>
-                      <div>
+                      <div className="text-black">
                         <strong className="text-black">Post-Treatment Protection:</strong> Our specialized
                         treatment eliminates organic growth at the root, preventing
                         premature buildup.
@@ -185,7 +185,7 @@ const Pressure = () => {
                     <div className="bg-[#00C6F9] text-white p-2 rounded-lg mr-4">
                       🔥
                     </div>
-                    <div>
+                    <div >
                       <strong className="text-black">Hot/Cold Washers:</strong> For grease removal and general cleaning
                     </div>
                   </li>
@@ -193,7 +193,7 @@ const Pressure = () => {
                     <div className="bg-[#00C6F9] text-white p-2 rounded-lg mr-4">
                       🚿
                     </div>
-                    <div>
+                    <div className="text-black">
                       <strong className="text-black">High-Pressure Nozzles:</strong> Up to 4000 PSI force
                     </div>
                   </li>
@@ -201,7 +201,7 @@ const Pressure = () => {
                     <div className="bg-[#00C6F9] text-white p-2 rounded-lg mr-4">
                       🚚
                     </div>
-                    <div>
+                    <div className="text-black">
                       <strong className="text-black">Specialized Fleet:</strong> Mobile cleaning solutions
                     </div>
                   </li>
