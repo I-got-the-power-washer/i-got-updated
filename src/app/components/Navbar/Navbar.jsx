@@ -70,7 +70,7 @@ const Navbar = () => {
         <Lottie
           animationData={Bubble}
           loop={true}
-          style={{ width: '100%', height: '100%' }}
+          style={{ width: '100%', height: '100%',transform: 'scale(2)'  }}
           className="md:hidden" // Only show on mobile
         />
       </div>
@@ -84,7 +84,7 @@ const Navbar = () => {
 </div>
         <div className="flex items-center md:order-2 space-x-1 md:space-x-2 rtl:space-x-reverse">
           <a
-            href="#"
+            href="/get-estimate"
             className="text-white bg-[#00C6F9] hover:bg-blue-500 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 md:px-5 md:py-2.5  focus:outline-none "
           >
             Free Estimate
@@ -111,7 +111,7 @@ const Navbar = () => {
                 href="/"
                 className="flex items-center py-2 px-3 text-[#00C6F9] hover:text-[#80a2d4]"
               >
-                <FaHome className="mr-2" />
+                
                 Home
               </a>
             </li>
@@ -126,7 +126,7 @@ const Navbar = () => {
                 className="flex items-center py-2 px-3 text-[#00C6F9] hover:text-[#00C6F9] "
               >
                 
-                <FaBuilding className="mr-2" />
+                {/* <FaBuilding className="mr-2" /> */}
                 <a href="/about-us">
                 About Us</a>
                 <FaChevronDown className="ml-2" />
@@ -178,7 +178,7 @@ const Navbar = () => {
                 }}
                 className="flex items-center py-2 px-3 text-[#00C6F9] hover:text-[#00C6F9]"
               >
-                <FaUsers className="mr-2" />
+                {/* <FaUsers className="mr-2" /> */}
                 Residential
                 <FaChevronDown className="ml-2" />
               </button>
@@ -229,7 +229,7 @@ const Navbar = () => {
                 }}
                 className="flex items-center py-2 px-3 text-[#00C6F9] hover:text-[#00C6F9]"
               >
-                <FaHandshake className="mr-2" />
+                {/* <FaHandshake className="mr-2" /> */}
                 Commercial
                 <FaChevronDown className="ml-2" />
               </button>
@@ -366,7 +366,7 @@ const Navbar = () => {
                 }}
                 className="flex items-center py-2 px-3 text-[#00C6F9] hover:text-[#00C6F9]"
               >
-                <FaImages className="mr-2" />
+                {/* <FaImages className="mr-2" /> */}
                 Gallery
                 <FaChevronDown className="ml-2" />
               </button>
@@ -390,7 +390,7 @@ const Navbar = () => {
                 href="/seal-solutions"
                 className="flex items-center py-2 px-3 text-[#00C6F9] hover:text-[#00C6F9]"
               >
-                <FaTools className="mr-2" />
+                {/* <FaTools className="mr-2" /> */}
                 Seal Solutions
               </a>
             </li>

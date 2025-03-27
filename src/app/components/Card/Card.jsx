@@ -29,14 +29,14 @@ const ServicesSection = () => {
     {
       id: 1,
       name: "Pressure Washing",
-      about: "Professional exterior cleaning for homes and driveways",
+      about: "Professional Pressure Washing for Homes & Driveways",
       link: "/pressure-washing",
       imageUrl: PressureWashingImg,
     },
     {
       id: 2,
       name: "House Washing",
-      about: "Safe and effective roof stain removal services",
+      about: "Revive Your Home’s Curb Appeal!",
       imageUrl: HouseWashingImg,
       link: "/house-washing"
     },
@@ -57,14 +57,14 @@ const ServicesSection = () => {
     {
       id: 5,
       name: "Roof Washing",
-      about: "Deck cleaning and sealing services",
+      about: "Revitalize & Protect Your Roof – Expert Roof Washing!",
       link: "/roof-washing",
       imageUrl: RoofWashingImg,
     },
     {
       id: 6,
       name: "Seal Solutions",
-      about: "Driveway and sidewalk deep cleaning",
+      about: "Durable Seal Solutions – Protect & Preserve Surfaces!",
       link: "/seal-solutions",
       imageUrl: SealSolutionsImg,
     },
@@ -139,6 +139,8 @@ const Card = ({ imageUrl, name, about, link }) => {
   );
 };
 
+
+// Styled Components with height adjustments
 const SectionContainer = styled.section`
   background: #fff;
   padding: 4rem 2rem;
@@ -175,7 +177,7 @@ const CardsGrid = styled.div`
 const StyledWrapper = styled.div`
   .card {
     width: 320px;
-    height: 380px;
+    height: 380px; /* Increased from 320px */
     background: white;
     border-radius: 32px;
     padding: 3px;
@@ -186,14 +188,14 @@ const StyledWrapper = styled.div`
 
     @media (max-width: 768px) {
       width: 280px;
-      height: 340px;
+      height: 340px; /* Increased from 280px */
     }
   }
 
   .profile-pic {
     position: absolute;
     width: calc(100% - 6px);
-    height: 65%;
+    height: 65%; /* Increased from full height */
     top: 3px;
     left: 3px;
     border-radius: 29px;
@@ -202,14 +204,25 @@ const StyledWrapper = styled.div`
     overflow: hidden;
     transition: all 0.5s ease-in-out 0.2s, z-index 0.5s ease-in-out 0.2s;
     background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  .profile-image {
+  .lottie-animation {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    transform: scale(1);
-    transition: all 0.5s ease-in-out;
+    transform: scale(1); /* Reduced from 1.2 */
+  }
+
+  .lottie-loading {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #00C6F9;
+    font-size: 0.8rem;
   }
 
   .bottom {
@@ -226,6 +239,7 @@ const StyledWrapper = styled.div`
     transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
   }
 
+  /* Keep all hover effects and other styles the same below */
   .content {
     position: absolute;
     bottom: 0;
@@ -304,6 +318,103 @@ const StyledWrapper = styled.div`
     border-radius: 80px 29px 29px 29px;
     transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1) 0.2s;
   }
+
+  .card:hover .profile-pic {
+    width: 120px;
+    height: 120px;
+    aspect-ratio: 1;
+    top: 15px;
+    left: 15px;
+    border-radius: 50%;
+    z-index: 3;
+    border: 7px solid #00C6F9;
+    box-shadow: rgba(96, 75, 74, 0.188) 0px 5px 5px 0px;
+    transition: all 0.5s ease-in-out, z-index 0.5s ease-in-out 0.1s;
+  }
+
+  .card:hover .profile-pic:hover {
+    transform: scale(1.3);
+    border-radius: 0px;
+  }
+
+  .card:hover .lottie-animation {
+    transform: scale(1.5);
+    transition: all 0.5s ease-in-out 0.5s;
+  }
+.bottom-bottom {
+  position: absolute;
+  bottom: 1rem;
+  left: 1.5rem;
+  right: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  
+  /* Add mobile-specific fixes */
+  @media (max-width: 768px) {
+    flex-wrap: nowrap;
+    gap: 8px;
+    bottom: 0.5rem;
+  }
+}
+
+.service-name-container {
+  background: white;
+  padding: 8px 15px;
+  border-radius: 20px;
+  flex-grow: 1;
+  margin-right: 1rem;
+  
+  /* Add text overflow handling */
+  @media (max-width: 768px) {
+    min-width: 60%;
+    white-space: normal; /* Allow text wrapping */
+    overflow: visible;
+    margin-right: 0;
+  }
+}
+
+.button {
+  background: white;
+  color: #00C6F9;
+  border: none;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  padding: 0.5rem 1rem;
+  box-shadow: rgba(96, 75, 74, 0.133) 0px 5px 5px 0px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  white-space: nowrap;
+  text-decoration: none;
+  display: inline-block;
+  
+  /* Mobile-specific button fixes */
+  @media (max-width: 768px) {
+    flex-shrink: 0;
+    padding: 8px 12px;
+    font-size: 0.9rem;
+    min-width: 100px;
+  }
+
+  &:hover {
+    background: #00A3CC;
+    color: white;
+  }
+}
+
+/* Add this new media query at bottom */
+@media (max-width: 480px) {
+  .service-name {
+    font-size: 0.8rem;
+  }
+  
+  .button {
+    font-size: 0.8rem;
+    padding: 6px 10px;
+  }
+}
+  
+
 
   .card:hover .profile-pic {
     width: 120px;
